@@ -59,9 +59,57 @@ const questions =
         const queryUrl = `https://api.github.com/users/${answers.username}`
         let githubData;
 
-        
+        axios
+            .get(queryUrl)
+            .then((response)) => {
+                githubData = response.data;
+                const license = writeToFile(answers.license);
+                const data = 
+                `${license.badge}
 
-        // TODO: Create a function to generate README Liscenses
+                # ${answers.title}
+        
+                ##Description
+                ${answers.description}
+                
+                ## Table of Contents
+                - [Installation](#installation)
+                - [Usage](#usage)
+                - [License](#license)
+                - [Contributions](#contributions)
+                - [Tests](#tests)
+                - [Questions](#questions)
+                
+                ## Installation
+                ${answers.installation}
+                
+                ## Usage
+                ${answers.usageInfo}
+                
+                ## License
+                ${license.notice}
+                
+                ## Contributions
+                ${answers.contributions}
+                
+                ## Tests
+                ${answers.testInfo}
+                
+                ## Questions
+                If you have any questions, don't hesitate to reach out:
+                
+                Github Profile: [${githubData.name}](${githubData.html_url})
+                
+                Github username: ${answers.username}
+                
+                Email: ${answers.email}`
+
+                fs.writeFile('README-test.md', data, (err) => {
+                    if (err) throw err;
+                    console.log('Success!')
+
+
+        // TODO: Create a function to generate README 
 function writeToFile(fileName) {
     let badge;
     let notice;
@@ -93,11 +141,6 @@ function writeToFile(fileName) {
     }
 
     return { badge, notice };
-}
-}
+    });
+});
 
-// TODO: Create a function to initialize app
-function init() {}
-
-// Function call to initialize app
-init();
