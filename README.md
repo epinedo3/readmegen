@@ -1,1 +1,3 @@
 # readmegen
+TRIAL RUN\
+TEST
