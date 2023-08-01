@@ -4,8 +4,9 @@ const inquirer = require('inquirer');
 const axios = require('axios');
 
 // TODO: Create an array of questions for user input
-const questions = 
-    prompt([
+
+inquirer
+    .prompt([
         {
             type: 'input',
             message: 'What is the title of your project?',
@@ -54,93 +55,103 @@ const questions =
         },
     ])
 
-    .then((answers) => {
         //creating url for api call using axios
-        const queryUrl = `https://api.github.com/users/${answers.username}`
-        let githubData;
-
-        axios
-            .get(queryUrl)
-            .then((response)) => {
-                githubData = response.data;
-                const license = writeToFile(answers.license);
-                const data = 
-                `${license.badge}
-
-                # ${answers.title}
+        .then((answers) => {
+            console.log(answers)
+            // const queryUrl = `https://api.github.com/users/${answers.username}`
+            // let githubData;
+        });
         
-                ##Description
-                ${answers.description}
-                
-                ## Table of Contents
-                - [Installation](#installation)
-                - [Usage](#usage)
-                - [License](#license)
-                - [Contributions](#contributions)
-                - [Tests](#tests)
-                - [Questions](#questions)
-                
-                ## Installation
-                ${answers.installation}
-                
-                ## Usage
-                ${answers.usageInfo}
-                
-                ## License
-                ${license.notice}
-                
-                ## Contributions
-                ${answers.contributions}
-                
-                ## Tests
-                ${answers.testInfo}
-                
-                ## Questions
-                If you have any questions, don't hesitate to reach out:
-                
-                Github Profile: [${githubData.name}](${githubData.html_url})
-                
-                Github username: ${answers.username}
-                
-                Email: ${answers.email}`
+        // calling axios
+    //         axios
+    //             .get(queryUrl)
+    //             .then((response) => {
+    // githubData = response.data;
+    // const license = writeToFile(answers.license);
+    // const data =
+    //     `${license.badge}
 
-                fs.writeFile('README-test.md', data, (err) => {
-                    if (err) throw err;
-                    console.log('Success!')
+
+    //             # ${answers.title}
+        
+    //             ##Description
+    //             ${answers.description}
+                
+    //             ## Table of Contents
+    //             - [Installation](#installation)
+    //             - [Usage](#usage)
+    //             - [License](#license)
+    //             - [Contributions](#contributions)
+    //             - [Tests](#tests)
+    //             - [Questions](#questions)
+                
+    //             ## Installation
+    //             ${answers.installation}
+                
+    //             ## Usage
+    //             ${answers.usageInfo}
+                
+    //             ## License
+    //             ${license.notice}
+                
+    //             ## Contributions
+    //             ${answers.contributions}
+                
+    //             ## Tests
+    //             ${answers.testInfo}
+                
+    //             ## Questions
+    //             If you have any questions, don't hesitate to reach out:
+                
+    //             Github Profile: [${githubData.name}](${githubData.html_url})
+                
+    //             Github username: ${answers.username}
+                
+    //             Email: ${answers.email}`
+                
+
+
+    // fs.writeFile('README-test.md', data, (err) => {
+    //     if (err) throw err;
+    //     console.log('Success!');
+    
 
 
         // TODO: Create a function to generate README 
-function writeToFile(fileName) {
-    let badge;
-    let notice;
+        function writeToFile(fileName) {
+            let badge;
+            let notice;
 
-    switch (license) {
-        case 'Apache License 2.0':
-            badge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
-            notice = 'Apache License 2.0.';
-            break;
-        case 'GNU General Public License v3.0':
-            badge = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
-            notice = 'GNU General Public License v3.0.';
-            break;
-        case 'ISC License':
-            badge = '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)';
-            notice = 'ISC License.';
-            break;
-        case 'MIT License':
-            badge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
-            notice = 'MIT License.';
-            break;
-        case 'Mozilla Public License 2.0':
-            badge = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)';
-            notice = 'Mozilla Public License 2.0.';
-            break;
-        case 'None':
-            badge = '';
-            notice = 'N/A';
-    }
+            switch (license) {
+                case 'Apache License 2.0':
+                    badge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
+                    notice = 'Apache License 2.0.';
+                    break;
+                case 'GNU General Public License v3.0':
+                    badge = '[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)'
+                    notice = 'GNU General Public License v3.0.';
+                    break;
+                case 'ISC License':
+                    badge = '[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)';
+                    notice = 'ISC License.';
+                    break;
+                case 'MIT License':
+                    badge = '[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)';
+                    notice = 'MIT License.';
+                    break;
+                case 'Mozilla Public License 2.0':
+                    badge = '[![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)](https://opensource.org/licenses/MPL-2.0)';
+                    notice = 'Mozilla Public License 2.0.';
+                    break;
+                case 'None':
+                    badge = '';
+                    notice = 'N/A';
+            }
 
-    return { badge, notice };
-    });
-});
+          
+            return { badge, notice };
+        };
+    // });
+// no
+        
 
