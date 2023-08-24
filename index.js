@@ -58,71 +58,20 @@ inquirer
         //creating url for api call using axios
         .then((answers) => {
             console.log(answers)
-            // const queryUrl = `https://api.github.com/users/${answers.username}`
-            // let githubData;
+            fs.writeFile('README-test.md', writeToFile(answers), (err) => {
+                if (err) throw err;
+                console.log('Success!');
+            })      
+        
         });
-        
-        // calling axios
-    //         axios
-    //             .get(queryUrl)
-    //             .then((response) => {
-    // githubData = response.data;
-    // const license = writeToFile(answers.license);
-    // const data =
-    //     `${license.badge}
-
-
-    //             # ${answers.title}
-        
-    //             ##Description
-    //             ${answers.description}
-                
-    //             ## Table of Contents
-    //             - [Installation](#installation)
-    //             - [Usage](#usage)
-    //             - [License](#license)
-    //             - [Contributions](#contributions)
-    //             - [Tests](#tests)
-    //             - [Questions](#questions)
-                
-    //             ## Installation
-    //             ${answers.installation}
-                
-    //             ## Usage
-    //             ${answers.usageInfo}
-                
-    //             ## License
-    //             ${license.notice}
-                
-    //             ## Contributions
-    //             ${answers.contributions}
-                
-    //             ## Tests
-    //             ${answers.testInfo}
-                
-    //             ## Questions
-    //             If you have any questions, don't hesitate to reach out:
-                
-    //             Github Profile: [${githubData.name}](${githubData.html_url})
-                
-    //             Github username: ${answers.username}
-                
-    //             Email: ${answers.email}`
-                
-
-
-    // fs.writeFile('README-test.md', data, (err) => {
-    //     if (err) throw err;
-    //     console.log('Success!');
-    
-
 
         // TODO: Create a function to generate README 
-        function writeToFile(fileName) {
+        function writeToFile(answers) {
+
             let badge;
             let notice;
-
-            switch (license) {
+            // Pick the license
+            switch (answers.license) {
                 case 'Apache License 2.0':
                     badge = '[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)';
                     notice = 'Apache License 2.0.';
@@ -147,11 +96,44 @@ inquirer
                     badge = '';
                     notice = 'N/A';
             }
+// Fill in Template for the README
+            return`# ${answers.title}${badge}
 
-          
-            return { badge, notice };
+## Description
+${answers.description}
+
+## Table of Contents
+- [Installation](#installation)
+- [Usage](#usage)
+- [License](#license)
+- [Contributions](#contributions)
+- [Tests](#tests)
+- [Questions](#questions)
+
+## Installation
+${answers.installation}
+
+## Usage
+${answers.usageInfo}
+
+## License
+${answers.license.notice}
+
+## Contributions
+${answers.contributions}
+
+## Tests
+${answers.testInfo}
+
+## Questions
+If you have any questions, don't hesitate to reach out:
+            
+Github: [${answers.username}](https://github.com/${answers.username}) 
+
+
+Email: ${answers.email}`
+
         };
-    // });
-// no
-        
+
+
 
