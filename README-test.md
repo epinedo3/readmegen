@@ -1,7 +1,7 @@
-# readmegen[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+# README.gen[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Description
-Module 9 Challenge
+Challenge 9 Module
 
 ## Table of Contents
 - [Installation](#installation)
@@ -12,7 +12,7 @@ Module 9 Challenge
 - [Questions](#questions)
 
 ## Installation
-Install inquirer
+install inquirer
 
 ## Usage
 n/a
@@ -21,10 +21,10 @@ n/a
 undefined
 
 ## Contributions
-w3 schools
+n/a
 
 ## Tests
-have fun
+n/a
 
 ## Questions
 If you have any questions, don't hesitate to reach out:
@@ -32,4 +32,4 @@ If you have any questions, don't hesitate to reach out:
 Github: [epinedo3](https://github.com/epinedo3) 
 
 
-Email: epinedo31@outlook.com
+Email: epinedo31

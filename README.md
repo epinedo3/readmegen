@@ -11,6 +11,8 @@ To find my github, click [here](https://github.com/epinedo3/readmegen).
 
 To find my deployed website, click [here]( https://epinedo3.github.io/readmegen/).
 
+To find my deployement video, click [here](https://drive.google.com/file/d/1y46rGcQFR-flFmZn8Z4xEoBknqEFAbu3/view).
+
 ## Screenshot
 N/A
 
